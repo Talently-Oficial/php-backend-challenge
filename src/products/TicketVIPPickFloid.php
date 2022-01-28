@@ -18,10 +18,10 @@ class TicketVIPPickFloid extends ProductAbstract implements SellingTemplateInter
         if ($this->quality < 50) {
             ++$this->quality;
 
-            if (($this->sellIn < 11) && $this->quality < 50) {
+            if ($this->sellIn < 11 && $this->quality < 50) {
                 ++$this->quality;
             }
-            if (($this->sellIn < 6) && $this->quality < 50) {
+            if ($this->sellIn < 6 && $this->quality < 50) {
                 ++$this->quality;
             }
         }
