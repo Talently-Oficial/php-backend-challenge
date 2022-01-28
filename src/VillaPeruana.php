@@ -23,7 +23,8 @@ class VillaPeruana
         $this->sellIn = $sellIn;
     }
 
-    public static function of($name, $quality, $sellIn) {
+    public static function of($name, $quality, $sellIn): VillaPeruana
+    {
         return new static($name, $quality, $sellIn);
     }
 
@@ -35,7 +36,7 @@ class VillaPeruana
         $sellFactory = new SellFactory();
         $sell = $sellFactory->initialize($this->name, $this->quality, $this->sellIn);
         $response = $sell->tick();
-//        print_r($response);die();
+
         $this->quality = $response['quality'] ?? $this->quality;
         $this->sellIn = $response['sellIn'] ?? $this->sellIn;
     }

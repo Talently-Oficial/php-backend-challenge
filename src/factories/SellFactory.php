@@ -2,6 +2,7 @@
 
 namespace App\factories;
 
+use App\products\CafeAltoCusco;
 use App\products\NormalProduct;
 use App\products\PiscoPeruano;
 use App\products\TicketVIPPickFloid;
@@ -11,10 +12,13 @@ use Exception;
 class SellFactory
 {
     /**
+     *
+     * Factory to sell products
+     *
      * @param $name
      * @param $quality
      * @param $sellIn
-     * @return NormalProduct|PiscoPeruano|TicketVIPPickFloid|TumiDeOroMoche
+     * @return CafeAltoCusco|NormalProduct|PiscoPeruano|TicketVIPPickFloid|TumiDeOroMoche
      * @throws Exception
      */
     public function initialize($name, $quality, $sellIn)
@@ -32,6 +36,9 @@ class SellFactory
                 break;
             case 'Normal' :
                 return new NormalProduct($quality, $sellIn);
+                break;
+            case 'CaféAltocusco' :
+                return new CafeAltoCusco($quality, $sellIn);
                 break;
             default:
                 throw new \RuntimeException("Not supported");

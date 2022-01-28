@@ -7,6 +7,9 @@ use App\interfaces\SellingTemplateInterface;
 class NormalProduct extends ProductAbstract implements SellingTemplateInterface
 {
     /**
+     *
+     * Business logic for NormalProduct
+     *
      * @return array
      */
     public function tick(): array

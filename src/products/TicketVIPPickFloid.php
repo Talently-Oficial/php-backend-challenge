@@ -8,6 +8,9 @@ class TicketVIPPickFloid extends ProductAbstract implements SellingTemplateInter
 {
 
     /**
+     *
+     * Business logic for TicketVIPPickFloid
+     *
      * @return array
      */
     public function tick(): array

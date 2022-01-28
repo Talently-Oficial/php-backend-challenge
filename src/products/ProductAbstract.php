@@ -7,13 +7,26 @@ abstract class ProductAbstract
     public $quality;
     public $sellIn;
 
+    /**
+     *
+     * Initialize properties
+     *
+     * @param $quality
+     * @param $sellIn
+     */
     public function __construct($quality, $sellIn)
     {
         $this->quality = $quality;
         $this->sellIn = $sellIn;
     }
 
-    public function response()
+    /**
+     *
+     * Generic response
+     *
+     * @return array
+     */
+    public function response(): array
     {
         return [
             'quality' => $this->quality,

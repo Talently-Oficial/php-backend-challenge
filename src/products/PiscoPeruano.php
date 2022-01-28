@@ -7,6 +7,9 @@ use App\interfaces\SellingTemplateInterface;
 class PiscoPeruano extends ProductAbstract implements SellingTemplateInterface
 {
     /**
+     *
+     * Business logic for PiscoPeruano
+     *
      * @return array
      */
     public function tick(): array
