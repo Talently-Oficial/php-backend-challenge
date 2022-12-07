@@ -49,7 +49,7 @@ Para dejarlo claro, un producto nunca puede incrementar su Quality mayor a 50, s
 - La limpieza y legibilidad del código será considerada.
 - La eficiencia del código en cuestiones de rendimiento sumarán para esta prueba.
 - Será indispensable uso de principios S.O.L.I.D.
-- Al finalizar el reto, enviar el enlace de la solución a emmanuel.barturen@talently.tech con copia a cristian@talently.tech con título "Reto Talently Backend"
+- Al finalizar el reto, enviar el enlace de la solución a emmanuel.barturen@talently.tech con copia a paula.anselmo@talently.tech con título "Reto Talently Backend"
 
 # Preguntas de conocimiento en Laravel
 
