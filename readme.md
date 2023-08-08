@@ -51,7 +51,7 @@ Para dejarlo claro, un producto nunca puede incrementar su Quality mayor a 50, s
 - Deseable el uso de Domain drive design (usa los conceptos de ddd, aggregates, value objects, domain services, etc)
 - La limpieza y legibilidad del código será considerada.
 - La eficiencia del código en cuestiones de rendimiento sumarán para esta prueba.
-- Al finalizar el reto, enviar el enlace de la solución a emmanuel.barturen@talently.tech con copia a juana.middleton@talently.tech con título "Reto Talently Backend"
+- Al finalizar el reto, enviar el enlace de la solución a carlos@talently.tech con copia a elena.baron@talently.tech y jhorman.tasayco@talently.tech con título "Reto Talently"
 
 # Preguntas de conocimiento en Laravel
 
