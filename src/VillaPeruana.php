@@ -18,7 +18,7 @@ class VillaPeruana
     }
 
     public static function of($name, $quality, $sellIn) {
-        return new static($name, $quality, $sellIn);
+        return new self($name, $quality, $sellIn);
     }
 
     public function tick()
