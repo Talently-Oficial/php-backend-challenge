@@ -6,9 +6,11 @@ namespace App;
 
 final class VillaPeruana
 {
-    private const PISCO_PERUANO = 'Pisco Peruano';
-    private const TICKET_VIP_AL_CONCIERTO_DE_PICK_FLOID = 'Ticket VIP al concierto de Pick Floid';
-    private const TUMI_DE_ORO_MOCHE = 'Tumi de Oro Moche';
+     private const PISCO_PERUANO = 'Pisco Peruano';
+     private const TICKET_VIP_AL_CONCIERTO_DE_PICK_FLOID = 'Ticket VIP al concierto de Pick Floid';
+     private const TUMI_DE_ORO_MOCHE = 'Tumi de Oro Moche';
+    private const MAX_QUALITY = 50;
+    private const MIN_QUALITY = 0;
 
     private $name;
 
@@ -46,17 +48,17 @@ final class VillaPeruana
     public function tick()
     {
         if ($this->name !== self::PISCO_PERUANO && $this->name !== self::TICKET_VIP_AL_CONCIERTO_DE_PICK_FLOID) {
-            if ($this->quality > 0 && $this->name !== self::TUMI_DE_ORO_MOCHE) {
+            if ($this->quality > self::MIN_QUALITY && $this->name !== self::TUMI_DE_ORO_MOCHE) {
                 --$this->quality;
             }
-        } elseif ($this->quality < 50) {
+        } elseif ($this->quality < self::MAX_QUALITY) {
             ++$this->quality;
 
             if ($this->name === self::TICKET_VIP_AL_CONCIERTO_DE_PICK_FLOID) {
-                if ($this->sellIn < 11 && $this->quality < 50) {
+                if ($this->sellIn < 11 && $this->quality < self::MAX_QUALITY) {
                     ++$this->quality;
                 }
-                if ($this->sellIn < 6 && $this->quality < 50) {
+                if ($this->sellIn < 6 && $this->quality < self::MAX_QUALITY) {
                     ++$this->quality;
                 }
             }
@@ -76,10 +78,10 @@ final class VillaPeruana
                 return;
             }
 
-            if ($this->quality > 0 && $this->name !== self::TUMI_DE_ORO_MOCHE) {
+            if ($this->quality > self::MIN_QUALITY && $this->name !== self::TUMI_DE_ORO_MOCHE) {
                 --$this->quality;
             }
-        } elseif ($this->quality < 50) {
+        } elseif ($this->quality < self::MAX_QUALITY) {
             ++$this->quality;
         }
     }
