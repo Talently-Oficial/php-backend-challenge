@@ -19,6 +19,21 @@ final class VillaPeruana
         $this->sellIn = $sellIn;
     }
 
+    public function name()
+    {
+        return $this->name;
+    }
+
+    public function quality()
+    {
+        return $this->quality;
+    }
+
+    public function sellIn()
+    {
+        return $this->sellIn;
+    }
+
     public static function of($name, $quality, $sellIn) {
         return new self($name, $quality, $sellIn);
     }
