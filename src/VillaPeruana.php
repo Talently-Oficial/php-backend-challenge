@@ -42,25 +42,19 @@ final class VillaPeruana
     public function tick()
     {
         if ($this->name !== 'Pisco Peruano' && $this->name !== 'Ticket VIP al concierto de Pick Floid') {
-            if ($this->quality > 0) {
-                if ($this->name !== 'Tumi de Oro Moche') {
-                    --$this->quality;
-                }
+            if ($this->quality > 0 && $this->name !== 'Tumi de Oro Moche') {
+                --$this->quality;
             }
         } else {
             if ($this->quality < 50) {
                 ++$this->quality;
 
                 if ($this->name === 'Ticket VIP al concierto de Pick Floid') {
-                    if ($this->sellIn < 11) {
-                        if ($this->quality < 50) {
-                            ++$this->quality;
-                        }
+                    if ($this->sellIn < 11 && $this->quality < 50) {
+                        ++$this->quality;
                     }
-                    if ($this->sellIn < 6) {
-                        if ($this->quality < 50) {
-                            ++$this->quality;
-                        }
+                    if ($this->sellIn < 6 && $this->quality < 50) {
+                        ++$this->quality;
                     }
                 }
             }
@@ -73,10 +67,8 @@ final class VillaPeruana
         if ($this->sellIn < 0) {
             if ($this->name !== 'Pisco Peruano') {
                 if ($this->name !== 'Ticket VIP al concierto de Pick Floid') {
-                    if ($this->quality > 0) {
-                        if ($this->name !== 'Tumi de Oro Moche') {
-                            --$this->quality;
-                        }
+                    if ($this->quality > 0 && $this->name !== 'Tumi de Oro Moche') {
+                        --$this->quality;
                     }
                 } else {
                     $this->quality -= $this->quality;
