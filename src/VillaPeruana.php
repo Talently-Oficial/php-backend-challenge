@@ -6,6 +6,10 @@ namespace App;
 
 final class VillaPeruana
 {
+    private const PISCO_PERUANO = 'Pisco Peruano';
+    private const TICKET_VIP_AL_CONCIERTO_DE_PICK_FLOID = 'Ticket VIP al concierto de Pick Floid';
+    private const TUMI_DE_ORO_MOCHE = 'Tumi de Oro Moche';
+
     private $name;
 
     private $quality;
@@ -41,14 +45,14 @@ final class VillaPeruana
 
     public function tick()
     {
-        if ($this->name !== 'Pisco Peruano' && $this->name !== 'Ticket VIP al concierto de Pick Floid') {
-            if ($this->quality > 0 && $this->name !== 'Tumi de Oro Moche') {
+        if ($this->name !== self::PISCO_PERUANO && $this->name !== self::TICKET_VIP_AL_CONCIERTO_DE_PICK_FLOID) {
+            if ($this->quality > 0 && $this->name !== self::TUMI_DE_ORO_MOCHE) {
                 --$this->quality;
             }
         } elseif ($this->quality < 50) {
             ++$this->quality;
 
-            if ($this->name === 'Ticket VIP al concierto de Pick Floid') {
+            if ($this->name === self::TICKET_VIP_AL_CONCIERTO_DE_PICK_FLOID) {
                 if ($this->sellIn < 11 && $this->quality < 50) {
                     ++$this->quality;
                 }
@@ -58,7 +62,7 @@ final class VillaPeruana
             }
         }
 
-        if ($this->name !== 'Tumi de Oro Moche') {
+        if ($this->name !== self::TUMI_DE_ORO_MOCHE) {
             --$this->sellIn;
         }
 
@@ -66,13 +70,13 @@ final class VillaPeruana
             return;
         }
 
-        if ($this->name !== 'Pisco Peruano') {
-            if (!($this->name !== 'Ticket VIP al concierto de Pick Floid')) {
+        if ($this->name !== self::PISCO_PERUANO) {
+            if (!($this->name !== self::TICKET_VIP_AL_CONCIERTO_DE_PICK_FLOID)) {
                 $this->quality -= $this->quality;
                 return;
             }
 
-            if ($this->quality > 0 && $this->name !== 'Tumi de Oro Moche') {
+            if ($this->quality > 0 && $this->name !== self::TUMI_DE_ORO_MOCHE) {
                 --$this->quality;
             }
         } elseif ($this->quality < 50) {
