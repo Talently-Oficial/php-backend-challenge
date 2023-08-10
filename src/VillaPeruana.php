@@ -6,11 +6,11 @@ namespace App;
 
 final class VillaPeruana
 {
-    public $name;
+    private $name;
 
-    public $quality;
+    private $quality;
 
-    public $sellIn;
+    private $sellIn;
 
     public function __construct($name, $quality, $sellIn)
     {
