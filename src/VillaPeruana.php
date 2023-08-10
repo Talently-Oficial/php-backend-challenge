@@ -34,7 +34,7 @@ final class VillaPeruana
         return $this->sellIn;
     }
 
-    public static function of($name, $quality, $sellIn)
+    public static function of($name, $quality, $sellIn): self
     {
         return new self($name, $quality, $sellIn);
     }
