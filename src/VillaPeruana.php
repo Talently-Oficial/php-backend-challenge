@@ -6,9 +6,6 @@ namespace App;
 
 final class VillaPeruana
 {
-    private const MAX_QUALITY = 50;
-    private const MIN_QUALITY = 0;
-
     private Name $name;
 
     private Quality $quality;
