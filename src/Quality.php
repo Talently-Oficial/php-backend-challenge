@@ -41,4 +41,9 @@ final class Quality
     {
         return $this->value() < self::MAX_QUALITY;
     }
+
+    public function reset()
+    {
+        return $this->decrease($this->value());
+    }
 }

@@ -32,4 +32,9 @@ final class SellIn
     {
         return $this->value() <= 5;
     }
+
+    public function isNegative(): bool
+    {
+        return $this->value() < 0;
+    }
 }

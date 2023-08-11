@@ -42,6 +42,8 @@ final class VillaPeruana
     public function tick()
     {
         $this->updateQuality();
+        $this->updateSellIn();
+        $this->updateQualityAfterSellIn();
     }
 
     private function updateQuality()
@@ -62,29 +64,29 @@ final class VillaPeruana
                 }
             }
         }
-
-        $this->updateSellIn();
-
-        if ($this->sellIn->value() < 0) {
-            if (!$this->name->isPiscoPeruano()) {
-                if ($this->name->isTicketVipAlConciertoDePickFloid()) {
-                    $this->quality = $this->quality->decrease($this->quality->value());
-                    return;
-                }
-
-                if ($this->quality->isGreaterThanMinValue() && !$this->name->isTumiDeOroMoche()) {
-                    $this->quality = $this->quality->decrease();
-                }
-            } elseif ($this->quality->isLessThanMaxValue()) {
-                $this->quality = $this->quality->increase();
-            }
-        }
     }
 
     private function updateSellIn()
     {
         if (!$this->name->isTumiDeOroMoche()) {
             $this->sellIn = $this->sellIn->decrease();
+        }
+    }
+
+    private function updateQualityAfterSellIn()
+    {
+        if (!$this->sellIn->isNegative()) {
+            return;
+        }
+
+        if (!$this->name->isPiscoPeruano()) {
+            if ($this->name->isTicketVipAlConciertoDePickFloid()) {
+                $this->quality = $this->quality->reset();
+            } elseif ($this->quality->isGreaterThanMinValue() && !$this->name->isTumiDeOroMoche()) {
+                $this->quality = $this->quality->decrease();
+            }
+        } elseif ($this->quality->isLessThanMaxValue()) {
+            $this->quality = $this->quality->increase();
         }
     }
 }
