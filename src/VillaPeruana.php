@@ -52,17 +52,25 @@ final class VillaPeruana
             if ($this->quality->isGreaterThanMinValue() && !$this->name->isTumiDeOroMoche()) {
                 $this->quality = $this->quality->decrease();
             }
-        } elseif ($this->quality->isLessThanMaxValue()) {
-            $this->quality = $this->quality->increase();
+            return;
+        }
 
-            if ($this->name->isTicketVipAlConciertoDePickFloid()) {
-                if ($this->sellIn->isThereTenDaysOrLess() && $this->quality->isLessThanMaxValue()) {
-                    $this->quality = $this->quality->increase();
-                }
-                if ($this->sellIn->isThereFiveDaysOrLess() && $this->quality->isLessThanMaxValue()) {
-                    $this->quality = $this->quality->increase();
-                }
-            }
+        if (!$this->quality->isLessThanMaxValue()) {
+            return;
+        }
+
+        $this->quality = $this->quality->increase();
+
+        if (!$this->name->isTicketVipAlConciertoDePickFloid()) {
+            return;
+        }
+
+        if ($this->sellIn->isThereTenDaysOrLess() && $this->quality->isLessThanMaxValue()) {
+            $this->quality = $this->quality->increase();
+        }
+
+        if ($this->sellIn->isThereFiveDaysOrLess() && $this->quality->isLessThanMaxValue()) {
+            $this->quality = $this->quality->increase();
         }
     }
 
@@ -82,10 +90,16 @@ final class VillaPeruana
         if (!$this->name->isPiscoPeruano()) {
             if ($this->name->isTicketVipAlConciertoDePickFloid()) {
                 $this->quality = $this->quality->reset();
-            } elseif ($this->quality->isGreaterThanMinValue() && !$this->name->isTumiDeOroMoche()) {
+                return;
+            }
+
+            if ($this->quality->isGreaterThanMinValue() && !$this->name->isTumiDeOroMoche()) {
                 $this->quality = $this->quality->decrease();
             }
-        } elseif ($this->quality->isLessThanMaxValue()) {
+            return;
+        }
+
+        if ($this->quality->isLessThanMaxValue()) {
             $this->quality = $this->quality->increase();
         }
     }
