@@ -14,11 +14,6 @@ final class VillaPeruana
         $this->product = $product;
     }
 
-    public function name(): string
-    {
-        return $this->product->name();
-    }
-
     public function quality(): int
     {
         return $this->product->quality()->value();

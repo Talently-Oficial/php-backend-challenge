@@ -11,13 +11,13 @@ final class ProductFactory
     {
         switch ($name->value()) {
             case Name::PISCO_PERUANO:
-                return new PiscoPeruano($name, $quality, $sellIn);
+                return new PiscoPeruano($quality, $sellIn);
             case Name::TUMI_DE_ORO_MOCHE:
-                return new TumiDeOroMoche($name, $quality, $sellIn);
+                return new TumiDeOroMoche($quality, $sellIn);
             case Name::TICKET_VIP_AL_CONCIERTO_DE_PICK_FLOID:
-                return new TicketVipAlConciertoDePickFloid($name, $quality, $sellIn);
+                return new TicketVipAlConciertoDePickFloid($quality, $sellIn);
             default:
-                return new Regular($name, $quality, $sellIn);
+                return new Regular($quality, $sellIn);
         }
     }
 }

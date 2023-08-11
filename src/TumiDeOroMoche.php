@@ -11,6 +11,10 @@ final class TumiDeOroMoche extends Product
     {
     }
 
+    protected function updateSellIn()
+    {
+    }
+
     protected function updateQualityAfterSellIn()
     {
     }

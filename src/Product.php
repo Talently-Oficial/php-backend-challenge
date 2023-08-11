@@ -6,14 +6,11 @@ namespace App;
 
 abstract class Product
 {
-    protected Name $name;
-
     protected Quality $quality;
     protected SellIn $sellIn;
 
-    public function __construct(Name $name, Quality $quality, SellIn $sellIn)
+    public function __construct(Quality $quality, SellIn $sellIn)
     {
-        $this->name = $name;
         $this->quality = $quality;
         $this->sellIn = $sellIn;
     }
@@ -37,11 +34,9 @@ abstract class Product
 
     abstract protected function updateQuality();
 
-    private function updateSellIn()
+    protected function updateSellIn()
     {
-        if (!$this->name->isTumiDeOroMoche()) {
-            $this->sellIn = $this->sellIn->decrease();
-        }
+        $this->sellIn = $this->sellIn->decrease();
     }
 
     abstract protected function updateQualityAfterSellIn();
