@@ -18,7 +18,7 @@ final class VillaPeruana
 
     private $sellIn;
 
-    public function __construct($name, $quality, $sellIn)
+    private function __construct($name, $quality, $sellIn)
     {
         $this->name = $name;
         $this->quality = $quality;
