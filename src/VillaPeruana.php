@@ -6,9 +6,6 @@ namespace App;
 
 final class VillaPeruana
 {
-     private const PISCO_PERUANO = 'Pisco Peruano';
-     private const TICKET_VIP_AL_CONCIERTO_DE_PICK_FLOID = 'Ticket VIP al concierto de Pick Floid';
-     private const TUMI_DE_ORO_MOCHE = 'Tumi de Oro Moche';
     private const MAX_QUALITY = 50;
     private const MIN_QUALITY = 0;
 
@@ -25,17 +22,17 @@ final class VillaPeruana
         $this->sellIn = $sellIn;
     }
 
-    public function name()
+    public function name(): Name
     {
         return $this->name;
     }
 
-    public function quality()
+    public function quality(): Quality
     {
         return $this->quality;
     }
 
-    public function sellIn()
+    public function sellIn(): SellIn
     {
         return $this->sellIn;
     }
@@ -47,14 +44,19 @@ final class VillaPeruana
 
     public function tick()
     {
-        if ($this->name->value() !== self::PISCO_PERUANO && $this->name->value() !== self::TICKET_VIP_AL_CONCIERTO_DE_PICK_FLOID) {
-            if ($this->quality->value() > self::MIN_QUALITY && $this->name->value() !== self::TUMI_DE_ORO_MOCHE) {
+        $this->updateQuality();
+    }
+
+    private function updateQuality()
+    {
+        if (!$this->name->isPiscoPeruano() && !$this->name->isTicketVipAlConciertoDePickFloid()) {
+            if ($this->quality->value() > self::MIN_QUALITY && !$this->name->isTumiDeOroMoche()) {
                 $this->quality = $this->quality->decrease();
             }
         } elseif ($this->quality->value() < self::MAX_QUALITY) {
             $this->quality = $this->quality->increase();
 
-            if ($this->name->value() === self::TICKET_VIP_AL_CONCIERTO_DE_PICK_FLOID) {
+            if ($this->name->isTicketVipAlConciertoDePickFloid()) {
                 if ($this->sellIn->value() < 11 && $this->quality->value() < self::MAX_QUALITY) {
                     $this->quality = $this->quality->increase();
                 }
@@ -64,25 +66,28 @@ final class VillaPeruana
             }
         }
 
-        if ($this->name->value() !== self::TUMI_DE_ORO_MOCHE) {
+        $this->updateSellIn();
+
+        if ($this->sellIn->value() < 0) {
+            if (!$this->name->isPiscoPeruano()) {
+                if ($this->name->isTicketVipAlConciertoDePickFloid()) {
+                    $this->quality = $this->quality->decrease($this->quality->value());
+                    return;
+                }
+
+                if ($this->quality->value() > self::MIN_QUALITY && !$this->name->isTumiDeOroMoche()) {
+                    $this->quality = $this->quality->decrease();
+                }
+            } elseif ($this->quality->value() < self::MAX_QUALITY) {
+                $this->quality = $this->quality->increase();
+            }
+        }
+    }
+
+    private function updateSellIn()
+    {
+        if (!$this->name->isTumiDeOroMoche()) {
             $this->sellIn = $this->sellIn->decrease();
-        }
-
-        if ($this->sellIn->value() >= 0) {
-            return;
-        }
-
-        if ($this->name->value() !== self::PISCO_PERUANO) {
-            if (!($this->name->value() !== self::TICKET_VIP_AL_CONCIERTO_DE_PICK_FLOID)) {
-                $this->quality = $this->quality->decrease($this->quality->value());
-                return;
-            }
-
-            if ($this->quality->value() > self::MIN_QUALITY && $this->name->value() !== self::TUMI_DE_ORO_MOCHE) {
-                $this->quality = $this->quality->decrease();
-            }
-        } elseif ($this->quality->value() < self::MAX_QUALITY) {
-            $this->quality = $this->quality->increase();
         }
     }
 }
