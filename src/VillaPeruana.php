@@ -57,10 +57,10 @@ final class VillaPeruana
             $this->quality = $this->quality->increase();
 
             if ($this->name->isTicketVipAlConciertoDePickFloid()) {
-                if ($this->sellIn->value() < 11 && $this->quality->isLessThanMaxValue()) {
+                if ($this->sellIn->value() <= 10 && $this->quality->isLessThanMaxValue()) {
                     $this->quality = $this->quality->increase();
                 }
-                if ($this->sellIn->value() < 6 && $this->quality->isLessThanMaxValue()) {
+                if ($this->sellIn->value() <= 5 && $this->quality->isLessThanMaxValue()) {
                     $this->quality = $this->quality->increase();
                 }
             }
