@@ -6,11 +6,11 @@ namespace App;
 
 final class Name
 {
-    private const PISCO_PERUANO = 'Pisco Peruano';
+    public const PISCO_PERUANO = 'Pisco Peruano';
 
-    private const TICKET_VIP_AL_CONCIERTO_DE_PICK_FLOID = 'Ticket VIP al concierto de Pick Floid';
+    public const TICKET_VIP_AL_CONCIERTO_DE_PICK_FLOID = 'Ticket VIP al concierto de Pick Floid';
 
-    private const TUMI_DE_ORO_MOCHE = 'Tumi de Oro Moche';
+    public const TUMI_DE_ORO_MOCHE = 'Tumi de Oro Moche';
 
     private string $value;
 

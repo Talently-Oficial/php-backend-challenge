@@ -6,66 +6,36 @@ namespace App;
 
 final class VillaPeruana
 {
-    private Name $name;
 
-    private Quality $quality;
+    private Product $product;
 
-    private SellIn $sellIn;
-
-    private function __construct(Name $name, Quality $quality, SellIn $sellIn)
+    private function __construct(Product $product)
     {
-        $this->name = $name;
-        $this->quality = $quality;
-        $this->sellIn = $sellIn;
+        $this->product = $product;
     }
 
-    public function name(): Name
+    public function name(): string
     {
-        return $this->name;
+        return $this->product->name();
     }
 
-    public function quality(): Quality
+    public function quality(): int
     {
-        return $this->quality;
+        return $this->product->quality()->value();
     }
 
-    public function sellIn(): SellIn
+    public function sellIn(): int
     {
-        return $this->sellIn;
+        return $this->product->sellIn()->value();
     }
 
     public static function of(string $name, int $quality, int $sellIn): self
     {
-        return new self(new Name($name), new Quality($quality), new SellIn($sellIn));
+        return new self(ProductFactory::create(new Name($name), new Quality($quality), new SellIn($sellIn)));
     }
 
     public function tick()
     {
-        $this->updateQuality();
-        $this->updateSellIn();
-        $this->updateQualityAfterSellIn();
-    }
-
-    private function updateQuality()
-    {
-        $qualityUpdater = QualityUpdaterFactory::create($this->name, $this->quality, $this->sellIn);
-        $this->quality = $qualityUpdater->update();
-    }
-
-    private function updateSellIn()
-    {
-        if (!$this->name->isTumiDeOroMoche()) {
-            $this->sellIn = $this->sellIn->decrease();
-        }
-    }
-
-    private function updateQualityAfterSellIn()
-    {
-        if (!$this->sellIn->isNegative()) {
-            return;
-        }
-
-        $qualityUpdater = QualityUpdaterFactory::createAfterSellIn($this->name, $this->quality);
-        $this->quality = $qualityUpdater->update();
+        $this->product->update();
     }
 }
