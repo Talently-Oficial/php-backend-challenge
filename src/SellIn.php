@@ -22,4 +22,14 @@ final class SellIn
     {
         return new self($this->value - 1);
     }
+
+    public function isThereTenDaysOrLess(): bool
+    {
+        return $this->value() <= 10;
+    }
+
+    public function isThereFiveDaysOrLess(): bool
+    {
+        return $this->value() <= 5;
+    }
 }
