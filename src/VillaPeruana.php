@@ -65,20 +65,7 @@ final class VillaPeruana
             return;
         }
 
-        if (!$this->name->isPiscoPeruano()) {
-            if ($this->name->isTicketVipAlConciertoDePickFloid()) {
-                $this->quality = $this->quality->reset();
-                return;
-            }
-
-            if ($this->quality->isGreaterThanMinValue() && !$this->name->isTumiDeOroMoche()) {
-                $this->quality = $this->quality->decrease();
-            }
-            return;
-        }
-
-        if ($this->quality->isLessThanMaxValue()) {
-            $this->quality = $this->quality->increase();
-        }
+        $qualityUpdater = QualityUpdaterFactory::createAfterSellIn($this->name, $this->quality);
+        $this->quality = $qualityUpdater->update();
     }
 }

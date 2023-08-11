@@ -14,4 +14,13 @@ final class QualityUpdaterFactory
 
         return new SpecialQualityUpdater($quality, $name, $sellIn);
     }
+
+    public static function createAfterSellIn(Name $name, Quality $quality): QualityUpdater
+    {
+        if (!$name->isPiscoPeruano()) {
+            return new AfterSellInQualityUpdater($quality, $name);
+        }
+
+        return new SpecialQualityUpdater($quality, $name, new SellIn(0));
+    }
 }
