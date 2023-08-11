@@ -48,30 +48,8 @@ final class VillaPeruana
 
     private function updateQuality()
     {
-        if (!$this->name->isPiscoPeruano() && !$this->name->isTicketVipAlConciertoDePickFloid()) {
-            if ($this->quality->isGreaterThanMinValue() && !$this->name->isTumiDeOroMoche()) {
-                $this->quality = $this->quality->decrease();
-            }
-            return;
-        }
-
-        if (!$this->quality->isLessThanMaxValue()) {
-            return;
-        }
-
-        $this->quality = $this->quality->increase();
-
-        if (!$this->name->isTicketVipAlConciertoDePickFloid()) {
-            return;
-        }
-
-        if ($this->sellIn->isThereTenDaysOrLess() && $this->quality->isLessThanMaxValue()) {
-            $this->quality = $this->quality->increase();
-        }
-
-        if ($this->sellIn->isThereFiveDaysOrLess() && $this->quality->isLessThanMaxValue()) {
-            $this->quality = $this->quality->increase();
-        }
+        $qualityUpdater = QualityUpdaterFactory::create($this->name, $this->quality, $this->sellIn);
+        $this->quality = $qualityUpdater->update();
     }
 
     private function updateSellIn()
