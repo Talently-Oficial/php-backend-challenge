@@ -6,6 +6,10 @@ namespace App;
 
 final class Quality
 {
+    private const MIN_QUALITY = 0;
+
+    private const MAX_QUALITY = 50;
+
     private int $value;
 
     public function __construct(int $value)
@@ -26,5 +30,15 @@ final class Quality
     public function increase(): self
     {
         return new self($this->value + 1);
+    }
+
+    public function isGreaterThanMinValue()
+    {
+        return $this->value() > self::MIN_QUALITY;
+    }
+
+    public function isLessThanMaxValue()
+    {
+        return $this->value() < self::MAX_QUALITY;
     }
 }

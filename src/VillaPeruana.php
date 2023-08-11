@@ -50,17 +50,17 @@ final class VillaPeruana
     private function updateQuality()
     {
         if (!$this->name->isPiscoPeruano() && !$this->name->isTicketVipAlConciertoDePickFloid()) {
-            if ($this->quality->value() > self::MIN_QUALITY && !$this->name->isTumiDeOroMoche()) {
+            if ($this->quality->isGreaterThanMinValue() && !$this->name->isTumiDeOroMoche()) {
                 $this->quality = $this->quality->decrease();
             }
-        } elseif ($this->quality->value() < self::MAX_QUALITY) {
+        } elseif ($this->quality->isLessThanMaxValue()) {
             $this->quality = $this->quality->increase();
 
             if ($this->name->isTicketVipAlConciertoDePickFloid()) {
-                if ($this->sellIn->value() < 11 && $this->quality->value() < self::MAX_QUALITY) {
+                if ($this->sellIn->value() < 11 && $this->quality->isLessThanMaxValue()) {
                     $this->quality = $this->quality->increase();
                 }
-                if ($this->sellIn->value() < 6 && $this->quality->value() < self::MAX_QUALITY) {
+                if ($this->sellIn->value() < 6 && $this->quality->isLessThanMaxValue()) {
                     $this->quality = $this->quality->increase();
                 }
             }
@@ -75,10 +75,10 @@ final class VillaPeruana
                     return;
                 }
 
-                if ($this->quality->value() > self::MIN_QUALITY && !$this->name->isTumiDeOroMoche()) {
+                if ($this->quality->isGreaterThanMinValue() && !$this->name->isTumiDeOroMoche()) {
                     $this->quality = $this->quality->decrease();
                 }
-            } elseif ($this->quality->value() < self::MAX_QUALITY) {
+            } elseif ($this->quality->isLessThanMaxValue()) {
                 $this->quality = $this->quality->increase();
             }
         }
