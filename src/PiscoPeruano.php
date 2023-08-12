@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\VillaPeruana\Products\Domain;
+namespace App;
 
 final class PiscoPeruano extends Product
 {
