@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App;
+namespace App\VillaPeruana\Products\Domain\ValueObjects;
 
 final class Quality
 {

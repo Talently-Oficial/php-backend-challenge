@@ -2,7 +2,13 @@
 
 declare(strict_types=1);
 
-namespace App;
+namespace App\VillaPeruana;
+
+use App\VillaPeruana\Products\Application\ProductFactory;
+use App\VillaPeruana\Products\Domain\Product;
+use App\VillaPeruana\Products\Domain\ValueObjects\Name;
+use App\VillaPeruana\Products\Domain\ValueObjects\Quality;
+use App\VillaPeruana\Products\Domain\ValueObjects\SellIn;
 
 final class VillaPeruana
 {

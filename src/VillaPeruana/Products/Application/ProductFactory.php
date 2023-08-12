@@ -2,7 +2,16 @@
 
 declare(strict_types=1);
 
-namespace App;
+namespace App\VillaPeruana\Products\Application;
+
+use App\VillaPeruana\Products\Domain\PiscoPeruano;
+use App\VillaPeruana\Products\Domain\Product;
+use App\VillaPeruana\Products\Domain\Regular;
+use App\VillaPeruana\Products\Domain\TicketVipAlConciertoDePickFloid;
+use App\VillaPeruana\Products\Domain\TumiDeOroMoche;
+use App\VillaPeruana\Products\Domain\ValueObjects\Name;
+use App\VillaPeruana\Products\Domain\ValueObjects\Quality;
+use App\VillaPeruana\Products\Domain\ValueObjects\SellIn;
 
 final class ProductFactory
 {
