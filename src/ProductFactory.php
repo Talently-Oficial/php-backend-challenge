@@ -10,6 +10,7 @@ final class ProductFactory
         'Pisco Peruano' => PiscoPeruano::class,
         'Ticket VIP al concierto de Pick Floid' => TicketVipAlConciertoDePickFloid::class,
         'Tumi de Oro Moche' => TumiDeOroMoche::class,
+        'Café Altocusco' => CafeAltocusco::class,
     ];
 
     public static function create(string $name, int $quality, int $sellIn): Product
