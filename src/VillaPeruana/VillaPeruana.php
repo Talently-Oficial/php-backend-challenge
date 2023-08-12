@@ -2,11 +2,13 @@
 
 declare(strict_types=1);
 
-namespace App;
+namespace App\VillaPeruana;
 
-
-use App\Products\Application\ProductFactory;
-use App\Products\Domain\Entities\Product;
+use App\VillaPeruana\Products\Application\ProductFactory;
+use App\VillaPeruana\Products\Domain\Product;
+use App\VillaPeruana\Products\Domain\ValueObjects\Name;
+use App\VillaPeruana\Products\Domain\ValueObjects\Quality;
+use App\VillaPeruana\Products\Domain\ValueObjects\SellIn;
 
 final class VillaPeruana
 {
@@ -30,7 +32,11 @@ final class VillaPeruana
 
     public static function of(string $name, int $quality, int $sellIn): self
     {
-        return new self(ProductFactory::create($name, $quality, $sellIn));
+        return new self(ProductFactory::create(
+            new Name($name),
+            new Quality($quality),
+            new SellIn($sellIn))
+        );
     }
 
     public function tick()

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Products\Domain\ValueObjects;
+namespace App\VillaPeruana\Products\Domain\ValueObjects;
 
 final class SellIn
 {

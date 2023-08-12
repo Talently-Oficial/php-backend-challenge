@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace App\Products\Domain\Entities;
+namespace App\VillaPeruana\Products\Domain;
 
-use App\Products\Domain\ValueObjects\Quality;
-use App\Products\Domain\ValueObjects\SellIn;
+use App\VillaPeruana\Products\Domain\ValueObjects\Quality;
+use App\VillaPeruana\Products\Domain\ValueObjects\SellIn;
 
 abstract class Product
 {
