@@ -1,10 +1,11 @@
 <?php
 
-use App\VillaPeruana;
 
 /*
  * Your work begins on LINE 248.
  */
+
+use App\VillaPeruana;
 
 describe('Villa Peruana', function () {
 

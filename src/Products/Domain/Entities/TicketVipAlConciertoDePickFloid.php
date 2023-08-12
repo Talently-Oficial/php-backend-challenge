@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\VillaPeruana\Products\Domain;
+namespace App\Products\Domain\Entities;
 
 final class TicketVipAlConciertoDePickFloid extends Product
 {
