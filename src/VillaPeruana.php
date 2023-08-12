@@ -26,11 +26,7 @@ final class VillaPeruana
 
     public static function of(string $name, int $quality, int $sellIn): self
     {
-        return new self(ProductFactory::create(
-            new Name($name),
-            new Quality($quality),
-            new SellIn($sellIn))
-        );
+        return new self(ProductFactory::create($name, $quality, $sellIn));
     }
 
     public function tick()
