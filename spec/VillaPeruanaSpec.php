@@ -245,63 +245,63 @@ describe('Villa Peruana', function () {
         });
 
 
-        // context ("Producto de Café", function () {
+        context ("Producto de Café", function () {
 
-        //     it ('actualiza Producto de Café antes de la fecha de venta', function () {
-        //         $item = GildedRose::of('Café Altocusco', 10, 10);
+            it ('actualiza Producto de Café antes de la fecha de venta', function () {
+                $item = VillaPeruana::of('Café Altocusco', 10, 10);
 
-        //         $item->tick();
+                $item->tick();
 
-        //         expect($item->quality())->toBe(8);
-        //         expect($item->sellIn())->toBe(9);
-        //     });
+                expect($item->quality())->toBe(8);
+                expect($item->sellIn())->toBe(9);
+            });
 
-        //     it ('actualiza Producto de Café con cualidad 0', function () {
-        //         $item = GildedRose::of('Café Altocusco', 0, 10);
+            it ('actualiza Producto de Café con cualidad 0', function () {
+                $item = VillaPeruana::of('Café Altocusco', 0, 10);
 
-        //         $item->tick();
+                $item->tick();
 
-        //         expect($item->quality())->toBe(0);
-        //         expect($item->sellIn())->toBe(9);
-        //     });
+                expect($item->quality())->toBe(0);
+                expect($item->sellIn())->toBe(9);
+            });
 
-        //     it ('actualiza Producto de Café en la fecha de venta', function () {
-        //         $item = GildedRose::of('Café Altocusco', 10, 0);
+            it ('actualiza Producto de Café en la fecha de venta', function () {
+                $item = VillaPeruana::of('Café Altocusco', 10, 0);
 
-        //         $item->tick();
+                $item->tick();
 
-        //         expect($item->quality())->toBe(6);
-        //         expect($item->sellIn())->toBe(-1);
-        //     });
+                expect($item->quality())->toBe(6);
+                expect($item->sellIn())->toBe(-1);
+            });
 
-        //     it ('actualiza Producto de Café en la fecha de venta con calidad 0', function () {
-        //         $item = GildedRose::of('Café Altocusco', 0, 0);
+            it ('actualiza Producto de Café en la fecha de venta con calidad 0', function () {
+                $item = VillaPeruana::of('Café Altocusco', 0, 0);
 
-        //         $item->tick();
+                $item->tick();
 
-        //         expect($item->quality())->toBe(0);
-        //         expect($item->sellIn())->toBe(-1);
-        //     });
+                expect($item->quality())->toBe(0);
+                expect($item->sellIn())->toBe(-1);
+            });
 
-        //     it ('actualiza Producto de Café después de la fecha de venta', function () {
-        //         $item = GildedRose::of('Café Altocusco', 10, -10);
+            it ('actualiza Producto de Café después de la fecha de venta', function () {
+                $item = VillaPeruana::of('Café Altocusco', 10, -10);
 
-        //         $item->tick();
+                $item->tick();
 
-        //         expect($item->quality())->toBe(6);
-        //         expect($item->sellIn())->toBe(-11);
-        //     });
+                expect($item->quality())->toBe(6);
+                expect($item->sellIn())->toBe(-11);
+            });
 
-        //     it ('actualiza Producto de Café después de la fecha de venta con calidad 0', function () {
-        //         $item = GildedRose::of('Café Altocusco', 0, -10);
+            it ('actualiza Producto de Café después de la fecha de venta con calidad 0', function () {
+                $item = VillaPeruana::of('Café Altocusco', 0, -10);
 
-        //         $item->tick();
+                $item->tick();
 
-        //         expect($item->quality())->toBe(0);
-        //         expect($item->sellIn())->toBe(-11);
-        //     });
+                expect($item->quality())->toBe(0);
+                expect($item->sellIn())->toBe(-11);
+            });
 
-        // });
+        });
 
     });
 
